@@ -17,6 +17,18 @@ toggle?.addEventListener("click", () => {
 
 navLinks.forEach((link) => link.addEventListener("click", closeMenu));
 
+const langLinks = [...document.querySelectorAll(".lang a")];
+langLinks.forEach((a) => {
+  a.dataset.base = a.getAttribute("href");
+});
+
+// Language links carry the current #section over to the other language
+function syncLangLinks() {
+  langLinks.forEach((a) => {
+    a.href = a.dataset.base + location.hash;
+  });
+}
+
 function updateActiveNav(updateUrl = false) {
   if (!sections.length) return;
 
@@ -44,6 +56,7 @@ function updateActiveNav(updateUrl = false) {
         "",
         location.pathname + location.search + hash,
       );
+      syncLangLinks();
     }
   }
 }
@@ -52,5 +65,7 @@ window.addEventListener("scroll", () => updateActiveNav(true), {
   passive: true,
 });
 window.addEventListener("resize", () => updateActiveNav());
+window.addEventListener("hashchange", syncLangLinks);
 
 updateActiveNav();
+syncLangLinks();
