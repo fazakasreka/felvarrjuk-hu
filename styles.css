@@ -137,18 +137,44 @@ a {
   border: 1px solid var(--line);
   background: var(--white);
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 8px 12px;
   font: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink-soft);
+  color: var(--ink);
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle svg {
+  display: block;
+  fill: none;
+}
+
+.menu-toggle svg path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.menu-toggle .close,
+.menu-toggle[aria-expanded="true"] .bars {
+  display: none;
+}
+
+.menu-toggle[aria-expanded="true"] .close {
+  display: inline;
 }
 
 .menu-toggle[aria-expanded="true"] {
   background: var(--navy);
   border-color: var(--navy);
   color: var(--cream);
+}
+
+.menu-toggle[aria-expanded="true"] svg path {
+  stroke: var(--cream);
 }
 
 .header-tools {
@@ -536,7 +562,7 @@ button:focus-visible {
   }
 
   .menu-toggle {
-    padding: 6px 12px;
+    padding: 8px 10px;
   }
 }
 
