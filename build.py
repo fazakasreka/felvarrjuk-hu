@@ -204,7 +204,7 @@ def build_body():
     <section class="hero" id="fooldal">
       <div class="hero-inner">
         <h1>Felvarrjuk.hu <small>{t("– varrónő és ruhajavítás Óbudán", "– tailoring and clothing alterations in Óbuda")}</small></h1>
-        <p class="lede">{t("Nagyból kicsit – kicsiből nagyot alkotni, mi ez, ha nem művészet.", "Turning something big into something small, and small into something grand – if that isn’t art, what is?")}</p>
+        <p class="lede">{t("Nagyból kicsit – kicsiből nagyot alkotni, mi ez, ha nem művészet?", "Turning something big into something small, and small into something grand – if that isn’t art, what is?")}</p>
         <div class="hero-tags" aria-label="{t("Kapcsolati információk", "Contact information")}">
           <a class="hero-tag" href="{MAPS}" target="_blank" rel="noopener">
             {t("Óbuda","1033 Budapest")}, Miklós utca 9.
