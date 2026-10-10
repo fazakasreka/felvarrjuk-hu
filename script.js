@@ -17,7 +17,7 @@ toggle?.addEventListener("click", () => {
 
 navLinks.forEach((link) => link.addEventListener("click", closeMenu));
 
-function updateActiveNav() {
+function updateActiveNav(updateUrl = false) {
   if (!sections.length) return;
 
   const marker = window.scrollY + 79;
@@ -33,9 +33,24 @@ function updateActiveNav() {
     if (active) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   });
+
+  // Keep the address bar in sync while scrolling (no extra history entries)
+  if (updateUrl) {
+    const atTop = window.scrollY < 40;
+    const hash = atTop ? "" : "#" + current.id;
+    if (location.hash !== hash) {
+      history.replaceState(
+        null,
+        "",
+        location.pathname + location.search + hash,
+      );
+    }
+  }
 }
 
-window.addEventListener("scroll", updateActiveNav, { passive: true });
-window.addEventListener("resize", updateActiveNav);
+window.addEventListener("scroll", () => updateActiveNav(true), {
+  passive: true,
+});
+window.addEventListener("resize", () => updateActiveNav());
 
 updateActiveNav();
